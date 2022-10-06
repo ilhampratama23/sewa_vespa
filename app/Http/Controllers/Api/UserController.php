@@ -52,4 +52,14 @@ class UserController extends Controller
             ], 422);
         } 
     }
+
+    public function userProfile()
+    {
+        $user = Auth::user();
+        $user = $user->makeHidden(['email_verified_at', 'password', 'remember_token']);
+
+        return response()->json([
+            'data' => $user
+        ], 200);
+    }
 }
