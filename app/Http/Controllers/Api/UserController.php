@@ -27,9 +27,11 @@ class UserController extends Controller
         $user = User::create($input);
         $token =  $user->createToken('MyApp')->accessToken;
         $name =  $user->name;
+        $admin = $user->admin;
    
         return response()->json([
             'token' => $token,
+            'admin' => $admin,
             'nama' => $name,
         ]);
     }
@@ -40,9 +42,11 @@ class UserController extends Controller
             $user = Auth::user(); 
             $token =  $user->createToken('MyApp')->accessToken;
             $name =  $user->name;
+            $admin = $user->admin;
    
             return response()->json([
                 'token' => $token,
+                'admin' => $admin,
                 'nama' => $name,
             ]);
         } 
