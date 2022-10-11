@@ -24,6 +24,7 @@ Route::post('register', [UserController::class, 'register']);
 Route::post('login', [UserController::class, 'login']);
 Route::group(['middleware' => 'auth:api'], function(){
     Route::post('motor/input', [MotorController::class, 'store']);
+    Route::get('motor/show', [MotorController::class, 'show']);
     Route::get('user', [UserController::class, 'userProfile']);
     Route::get('logout', [UserController::class, 'logout']);
 });

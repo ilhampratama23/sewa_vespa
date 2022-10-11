@@ -22,11 +22,19 @@ class MotorController extends Controller
         $motor->merk = $request->merk;
         $motor->tahun = $request->tahun;
         $motor->jenis = $request->jenis;
-        
+
         $motor->save();
 
         return response()->json([
             'success' => 'Data Berhasil Disimpan'
+        ], 200);
+    }
+
+    public function show()
+    {
+        $motor = Motor::all();
+        return response()->json([
+            'data' => $motor
         ], 200);
     }
 }
